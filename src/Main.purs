@@ -1,10 +1,20 @@
 module Main where
 
+import Jelly
 import Prelude
 
 import Effect (Effect)
-import Effect.Console (log)
+import Hooks.UseClass (useClass)
+import Hooks.UseDelayClass (useDelayClass)
 
 main :: Effect Unit
 main = do
-  log "🍝"
+  launchApp root unit
+
+root :: Component Unit
+root = el "div" do
+  ch $ el "img" do
+    useClass $ pure "transition duration-1000 ease-out"
+    useDelayClass 400 (pure "rotate-[540deg] scale-0") (pure "")
+    "src" := pure "./img/zer0-star.webp"
+    "alt" := pure "zer0-star"

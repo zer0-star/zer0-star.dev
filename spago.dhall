@@ -11,7 +11,8 @@ When creating a new Spago project, you can use
 to generate this file without the comments in this block.
 -}
 { name = "zer0-star.dev"
-, dependencies = [ "console", "effect", "prelude", "jelly" ]
+, dependencies =
+  [ "console", "effect", "jelly", "prelude", "strings", "tuples" ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs", "test/**/*.purs" ]
 }
