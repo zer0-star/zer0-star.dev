@@ -26,13 +26,10 @@ jobs:
         uses: cachix/install-nix-action@v17
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - name: Cache install Nix packages
-        uses: rikhuijzer/cache-install@v1.0.9
+      - uses: cachix/cachix-action@v10
         with:
-          nix_file: shell.nix
-          key: ${{ runner.os }}-nix-${{ hashFiles('shell.nix') }}
-          restore-keys: |
-            ${{ runner.os }}-nix-
+          name: zer0-star-site
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Cache npm dependencies
         uses: actions/cache@v3
         with:
