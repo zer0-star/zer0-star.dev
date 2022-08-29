@@ -43,10 +43,7 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - name: use nix-shell and build
-        run: |
-          nix-shell
-          npm ci
-          npm run build
+        run: nix-shell --run "npm ci && npm run build"
       # - name: Install NPM packages
       #   run: npm ci
       # - name: Build website
