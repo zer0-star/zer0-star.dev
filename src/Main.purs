@@ -1,11 +1,11 @@
 module Main where
 
-import Jelly
 import Prelude
 
 import Effect (Effect)
 import Hooks.UseClass (useClass)
 import Hooks.UseDelayClass (useDelayClass)
+import Jelly (Component, ch, el, launchApp, (:=))
 
 main :: Effect Unit
 main = do
