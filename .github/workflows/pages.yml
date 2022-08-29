@@ -42,12 +42,15 @@ jobs:
         uses: cachix/install-nix-action@v17
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - name: use nix-shell
-        run: nix-shell
-      - name: Install NPM packages
-        run: npm ci
-      - name: Build website
-        run: npm run build
+      - name: use nix-shell and build
+        run: |
+          nix-shell
+          npm ci
+          npm run build
+      # - name: Install NPM packages
+      #   run: npm ci
+      # - name: Build website
+      #   run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
