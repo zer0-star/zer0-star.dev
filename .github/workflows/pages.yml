@@ -22,6 +22,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Cache install Nix packages
+        uses: rikhuijzer/cache-install@v1.0.9
+        with:
+          nix_file: shell.nix
+          key: ${{ runner.os }}-nix-${{ hashFiles('shell.nix') }}
+          restore-keys: |
+            ${{ runner.os }}-nix-
       - name: Cache npm dependencies
         uses: actions/cache@v3
         with:
