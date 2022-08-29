@@ -15,12 +15,9 @@ to generate this file without the comments in this block.
   [ "console"
   , "effect"
   , "jelly"
-  , "js-timers"
-  , "maybe"
   , "prelude"
   , "strings"
   , "tuples"
-  , "web-html"
   ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs", "test/**/*.purs" ]
