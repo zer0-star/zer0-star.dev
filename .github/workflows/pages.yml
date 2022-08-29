@@ -29,8 +29,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: Install NPM packages
-        run: npm ci
       - name: Cache PureScript dependencies
         uses: actions/cache@v3
         with:
@@ -40,8 +38,20 @@ jobs:
           key: ${{ runner.os }}-spago-${{ hashFiles('**/*.dhall') }}
           restore-keys: |
             ${{ runner.os }}-spago-
-      - name: Build website
-        run: npm run build
+      - name: Install Nix
+        uses: cachix/install-nix-action@v17
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      - name: Build with nix-shell
+        uses: workflow/nix-shell-action@v3.0.2
+        with:
+          script: |
+            npm ci
+            npm run build
+      # - name: Install NPM packages
+      #   run: npm ci
+      # - name: Build website
+      #   run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
