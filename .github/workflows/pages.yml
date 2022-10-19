@@ -18,46 +18,49 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - name: Setup PureScript
-        uses: purescript-contrib/setup-purescript@main
-      # - name: Install Nix
-      #   uses: cachix/install-nix-action@v17
+      # - name: Setup Node.js
+      #   uses: actions/setup-node@v3
       #   with:
-      #     nix_path: nixpkgs=channel:nixos-unstable
+      #     node-version: 18
+      # - name: Setup PureScript
+      #   uses: purescript-contrib/setup-purescript@main
+      - name: Install Nix
+        uses: cachix/install-nix-action@v18
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
       # - uses: cachix/cachix-action@v10
       #   with:
       #     name: zer0-star-site
       #     authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Cache npm dependencies
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Cache PureScript dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            .spago
-            output
-          key: ${{ runner.os }}-spago-${{ hashFiles('**/*.dhall') }}
-          restore-keys: |
-            ${{ runner.os }}-spago-
+      # - name: Cache npm dependencies
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: node_modules
+      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-node-
+      # - name: Cache PureScript dependencies
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: |
+      #       .spago
+      #       output
+      #     key: ${{ runner.os }}-spago-${{ hashFiles('**/*.dhall') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-spago-
       # - name: use nix-shell and build
       #   run: nix-shell --run "npm ci && npm run build"
-      - name: Install NPM packages
-        run: npm ci
-      - name: Build website
-        run: npm run build
+      # - name: Install NPM packages
+      #   run: npm ci
+      # - name: Build website
+      #   run: npm run build
+      - name: Build site
+        run: nix build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./public
+          path: ./result/public
+          # path: ./public
 
   deploy:
     runs-on: ubuntu-latest

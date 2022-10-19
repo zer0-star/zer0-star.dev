@@ -2,25 +2,32 @@ module Main where
 
 import Prelude
 
+import Data.Foldable (traverse_)
 import Effect (Effect)
-import Hooks.UseClass (useClass)
-import Hooks.UseDelayClass (useDelayClass)
-import Jelly (Component, ch, el, launchApp, text, (:=))
+import Effect.Aff (launchAff_)
+import Effect.Class (liftEffect)
+import Jelly.Aff (awaitBody)
+import Jelly.Data.Component (Component, el', voidEl, text)
+import Jelly.Data.Prop ((:=))
+import Jelly.Mount (mount_)
+
+type Context :: Row Type
+type Context = ()
 
 main :: Effect Unit
-main = do
-  launchApp root unit
+main = launchAff_ do
+  appMaybe <- awaitBody
+  liftEffect $ traverse_ (mount_ {} root) appMaybe
 
-root :: Component Unit
-root = el "div" do
-  "id" := pure "root"
+bodyComponent :: Component Context
+bodyComponent = do
+  el' "h1" do
+    text "Hello World!"
 
-  useClass $ pure "w-screen min-w-[22rem]"
+root :: Component Context
+root = el' "div" do
+  text "Hello!"
 
-  ch $ text $ pure "Hello!"
+  voidEl "img" [ "src" := "./img/zer0-star.webp", "alt" := "zer0-star", "class" := "rounded-full animate-pop-out" ]
 
-  ch $ el "img" do
-    useClass $ pure "rounded-full transition duration-1000 ease-out"
-    useDelayClass 100 (pure "rotate-[540deg] scale-0") (pure "")
-    "src" := pure "./img/zer0-star.webp"
-    "alt" := pure "zer0-star"
+  bodyComponent
