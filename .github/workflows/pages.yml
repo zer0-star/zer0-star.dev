@@ -50,12 +50,15 @@ jobs:
       # - name: Build website
       #   run: npm run build
       - name: Build site
-        run: nix build
+        run: |
+          nix build
+          # fix permission problem with nix (https://github.com/actions/deploy-pages/issues/58)
+          cp --recursive --dereference --no-preserve=mode,ownership result/public dist
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./result/public
-          # path: ./public
+          # path: ./result/public
+          path: ./dist
 
   deploy:
     runs-on: ubuntu-latest
