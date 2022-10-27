@@ -1,11 +1,11 @@
 { inputs =
     { nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
       ps-tools.follows = "purs-nix/ps-tools";
-      purs-nix.url = "github:purs-nix/purs-nix/master";
+      purs-nix.url = "github:zer0-star/purs-nix/add-jelly";
       utils.url = "github:numtide/flake-utils";
     };
 
-  outputs = { nixpkgs, utils, ... }@inputs:
+  outputs = { self, nixpkgs, utils, ... }@inputs:
     utils.lib.eachSystem [ "x86_64-linux" "x86_64-darwin" ]
       (system:
          let
@@ -19,6 +19,8 @@
                    [ console
                      effect
                      foldable-traversable
+                     node-fs
+                     node-fs-aff
                      prelude
                      strings
                      tuples
@@ -30,10 +32,18 @@
          in
          { packages =
              rec {
-               default = import ./default.nix { inherit bundle pkgs; };
-               bundle = ps.modules.Main.bundle { esbuild = { minify = true; }; };
-               output = ps.modules.Main.output {};
+               default = import ./default.nix { inherit main generate-site pkgs; };
+               main = ps.modules.BrowserMain.bundle { esbuild = { minify = true; }; };
+               generate-site = ps.modules.NodeMain.script {};
+               server = pkgs.writeShellScriptBin "server" ''
+                 ${pkgs.simple-http-server}/bin/simple-http-server -i ${default}/public
+               '';
              };
+
+           apps.serve = {
+             type = "app";
+             program = "${self.packages.${system}.server}/bin/server";
+           };
 
            devShells.default =
              pkgs.mkShell

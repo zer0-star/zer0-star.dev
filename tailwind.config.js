@@ -6,6 +6,10 @@ module.exports = {
   content: ["./src/**/*.purs"],
   theme: {
     extend: {
+      colors: {
+        "midnight-blue": "#0c4c6f",
+        "pale-blue": "#d8e7ee",
+      },
       animation: {
         "pop-out": `pop-size 1s ${easing}, pop-angle 1s 0.05s ${easing}`,
       },
@@ -20,6 +24,9 @@ module.exports = {
             transform: "rotate(calc(360deg * 1.5))",
           },
         },
+      },
+      fontFamily: {
+        Oxygen: ["Oxygen", "sans-serif"],
       },
     },
   },

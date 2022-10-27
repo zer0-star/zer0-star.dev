@@ -1,4 +1,4 @@
-{ pkgs, bundle }:
+{ pkgs, main, generate-site }:
 
 pkgs.stdenv.mkDerivation {
   name = "zer0-star.dev";
@@ -12,7 +12,8 @@ pkgs.stdenv.mkDerivation {
   ];
 
   buildPhase = ''
-    cp ${bundle} ./public/index.js
+    cp ${main} ./public/index.js
+    ${generate-site}
     tailwindcss -i ./src/index.css -o ./public/index.css
   '';
 
