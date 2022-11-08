@@ -6,6 +6,9 @@ module.exports = {
   content: ["./src/**/*.purs"],
   theme: {
     extend: {
+      letterSpacing: {
+        tightest: "-.075em",
+      },
       colors: {
         "midnight-blue": "#0c4c6f",
         "pale-blue": "#d8e7ee",
@@ -27,6 +30,7 @@ module.exports = {
       },
       fontFamily: {
         Oxygen: ["Oxygen", "sans-serif"],
+        Quicksand: ["Quicksand", "sans-serif"],
       },
     },
   },

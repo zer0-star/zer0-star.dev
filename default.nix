@@ -19,6 +19,6 @@ pkgs.stdenv.mkDerivation {
 
   installPhase = ''
     mkdir $out
-    cp -r public $out
+    mv public $out
   '';
 }
