@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       letterSpacing: {
         tightest: "-.075em",
+        supertight: "-.125em",
       },
       colors: {
         "midnight-blue": "#0c4c6f",

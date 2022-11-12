@@ -4,7 +4,7 @@ import Prelude
 
 import Jelly.Router.Data.Url (Url)
 
-data Page = PageNotFound | PageTop | PageCounter
+data Page = PageNotFound | PageTop | PageWorks
 
 derive instance Eq Page
 
@@ -12,7 +12,7 @@ pageToUrl :: Page -> Url
 pageToUrl page =
   let
     path = case page of
-      PageCounter -> [ "counter" ]
+      PageWorks -> [ "works" ]
       PageNotFound -> [ "404" ]
       PageTop -> []
   in
@@ -25,5 +25,5 @@ urlToPage :: Url -> Page
 urlToPage url =
   case url.path of
     [] -> PageTop
-    [ "counter" ] -> PageCounter
+    [ "works" ] -> PageWorks
     _ -> PageNotFound

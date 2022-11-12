@@ -2,17 +2,17 @@ module Root where
 
 import Prelude
 
+import Component.Link (linkToPage)
 import Context (Context)
 import Data.Color (useColor)
 import Data.Page (Page(..), urlToPage)
 import Jelly (Component, doctypeHtml, hooks, signalC, text, (:=))
 import Jelly.Element as JE
 import Jelly.Router (routerLink')
-import Jelly.Router.Components (routerLink)
 import Jelly.Router.Data.Router (useRouter)
-import Pages.Counter (counterPage)
 import Pages.NotFound (notFoundPage)
 import Pages.Top (topPage)
+import Pages.Works (worksPage)
 
 rootComponent :: Component Context
 rootComponent = do
@@ -35,16 +35,17 @@ bodyComponent :: Component Context
 bodyComponent = hooks do
   { textColor, bgColor } <- useColor
   pure do
-    JE.body [ "class" := bgColor <> " " <> textColor ] do
+    JE.body [ "class" := [ bgColor, textColor ] ] do
       JE.header [ "class" := "sticky top-0" <> " " <> bgColor ] do
-        JE.div [ "class" := "mx-4 my-1" ] do
-          JE.div [ "class" := "font-Quicksand font-light text-6xl tracking-tightest" ] do
-            routerLink' { path: [], query: mempty, hash: "" } $ text "zer0-star's Homepage"
-          JE.div [ "class" := "flex gap-4 h-full w-64 underline decoration-indigo-500 font-bold text-xl ml-1" ] do
-            routerLink { path: [], query: mempty, hash: "" } [ "class" := "block" ] (text "Home")
-            routerLink { path: [ "counter" ], query: mempty, hash: "" } [ "class" := "block" ] (text "Counter")
-            routerLink { path: [ "hello", "World" ], query: mempty, hash: "" } [ "class" := "block" ] (text "Greet")
-            routerLink { path: [ "nanachi" ], query: mempty, hash: "" } [ "class" := "block" ] (text "???")
+        JE.div [ "class" := "px-4 py-1" ] do
+          JE.div [ "class" := "font-Quicksand font-light text-6xl tracking-supertight" ] do
+            routerLink' { path: [], query: mempty, hash: "" } do
+              text "zer0-star"
+              JE.span [ "class" := "ml-1 mr-0.5" ] $ text "."
+              text "dev"
+          JE.div [ "class" := "flex gap-4 text-xl ml-1" ] do
+            linkToPage PageTop (text "About")
+            linkToPage PageWorks (text "Works")
         JE.div [ "class" := "h-[1px] w-full bg-pale-blue" ] mempty
       JE.div [ "class" := "p-2 h-full w-full grow" ] do
         mainContent
@@ -52,9 +53,10 @@ bodyComponent = hooks do
 mainContent :: Component Context
 mainContent = hooks do
   { currentUrlSig } <- useRouter
-  pure $ JE.main [ "class" := "h-full w-full" ] $ signalC do
-    currentUrl <- currentUrlSig
-    pure case urlToPage currentUrl of
-      PageTop -> topPage
-      PageCounter -> counterPage
-      PageNotFound -> notFoundPage
+  pure $ JE.main [ "class" := "h-full w-full text-lg flex flex-col items-center" ] do
+    JE.div [ "class" := "w-full max-w-3xl" ] $ signalC do
+      currentUrl <- currentUrlSig
+      pure case urlToPage currentUrl of
+        PageTop -> topPage
+        PageWorks -> worksPage
+        PageNotFound -> notFoundPage
