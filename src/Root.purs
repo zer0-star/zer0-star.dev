@@ -17,19 +17,28 @@ import Pages.Works (worksPage)
 rootComponent :: Component Context
 rootComponent = do
   doctypeHtml
-  JE.html [ "lang" := "en", "class" := "font-Oxygen" ] do
+  JE.html [ "lang" := "en", "class" := "font-Oxygen", "prefix" := "og: http://ogp.me/ns#" ] do
     headComponent
     bodyComponent
 
 headComponent :: Component Context
 headComponent = JE.head' do
-  JE.title' $ text "zer0-star's page"
+  JE.title' $ text "zer0-star.dev"
   JE.script [ "src" := "/index.js" ] mempty
   JE.link [ "rel" := "stylesheet", "href" := "/index.css" ]
 
   JE.link [ "rel" := "preconnect", "href" := "https://fonts.googleapis.com" ]
   JE.link [ "rel" := "preconnect", "href" := "https://fonts.gstatic.com", "crossorigin" := true ]
   JE.link [ "rel" := "stylesheet", "href" := "https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&family=Quicksand:wght@300&display=swap" ]
+
+  JE.meta [ "name" := "twitter:card", "content" := "summary" ]
+  JE.meta [ "name" := "twitter:creator", "content" := "@0x_zer0star" ]
+
+  JE.meta [ "property" := "og:url", "content" := "https://zer0-star.dev/" ]
+  JE.meta [ "property" := "og:type", "content" := "website" ]
+  JE.meta [ "property" := "og:title", "content" := "zer0-star.dev" ]
+  JE.meta [ "property" := "og:description", "content" := "zer0-star's website" ]
+  JE.meta [ "property" := "og:image", "content" := "https://zer0-star.dev/img/ogp_image.png" ]
 
 bodyComponent :: Component Context
 bodyComponent = hooks do

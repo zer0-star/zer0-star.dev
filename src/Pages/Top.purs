@@ -22,10 +22,10 @@ topPage = JE.div [ "class" := "h-full w-full" ] do
         M.list
           [ do
               link "zer0-star/zer0-star.dev" "https://github.com/zer0-star/zer0-star.dev"
-              JE.p' $ text "this website"
+              JE.div' $ text "this website"
           , do
               link "zer0-star/nix-home" "https://github.com/zer0-star/nix-home"
-              JE.p' $ text "my home-manager setup"
+              JE.div' $ text "my home-manager setup"
           ]
     , account "AtCoder" "zer0star" "https://atcoder.jp/users/zer0star"
     , link "Blog" "https://zer0-star.github.io/blog"
