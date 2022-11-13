@@ -31,7 +31,7 @@ headComponent = JE.head' do
   JE.link [ "rel" := "preconnect", "href" := "https://fonts.gstatic.com", "crossorigin" := true ]
   JE.link [ "rel" := "stylesheet", "href" := "https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&family=Quicksand:wght@300&display=swap" ]
 
-  JE.meta [ "name" := "twitter:card", "content" := "summary" ]
+  JE.meta [ "name" := "twitter:card", "content" := "summary_large_image" ]
   JE.meta [ "name" := "twitter:creator", "content" := "@0x_zer0star" ]
 
   JE.meta [ "property" := "og:url", "content" := "https://zer0-star.dev/" ]
