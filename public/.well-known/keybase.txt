@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/zer0star
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://zer0-star.dev
+  * I am zer0star (https://keybase.io/zer0star) on keybase.
+  * I have a public key ASDJWgrJl9Uy0_ZgJ-toV8YwmvKUVavE0a9l6krWm8V_ZAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120c95a0ac997d532d3f66027eb6857c6309af29455abc4d1af65ea4ad69bc57f640a",
+      "host": "keybase.io",
+      "kid": "0120c95a0ac997d532d3f66027eb6857c6309af29455abc4d1af65ea4ad69bc57f640a",
+      "uid": "acc009a3ded5504d734c63494049da19",
+      "username": "zer0star"
+    },
+    "merkle_root": {
+      "ctime": 1668872638,
+      "hash": "89bdabaaa193035c5d1bc537cfbd25d2a922042362530fea3133e562693be6900ab5a6af2bf0d9a5d835eaf358ca9c792d68e194a4458756b0b401d32d739e6c",
+      "hash_meta": "17406c9045ac0cac7e4c0670e0a1732cfb869a6056dea26810982500c9ff08ca",
+      "seqno": 23581575
+    },
+    "service": {
+      "entropy": "6rXwCRHDZyhZA3kK7q2od1VN",
+      "hostname": "zer0-star.dev",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.0.2"
+  },
+  "ctime": 1668872763,
+  "expire_in": 504576000,
+  "prev": "0ba4e0ea9c8275454b68c36bd600a4f1b13528d91ac1747cc1a76b5acf166f7b",
+  "seqno": 7,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgyVoKyZfVMtP2YCfraFfGMJrylFWrxNGvZepK1pvFf2QKp3BheWxvYWTESpcCB8QgC6Tg6pyCdUVLaMNr1gCk8bE1KNkawXR8wadrWs8Wb3vEIFvfh+03BRLX+DPdUV8/zMAlPXxY9r4y1RZOF+lDtO1VAgHCo3NpZ8RAjj9Sg1dPXC9yCE9Kr39rfxzk8BvAbllHmzDfjgxWWGpNPR/UPMPOWjHOAFfE1/oYPsOxnHlXZ37wXoYDsxHzAqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIJu/33zsOLA+mayx0Dkt6HP0UR5xoG6s1gtZgq/O06Lyo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/zer0star
+
+==================================================================
