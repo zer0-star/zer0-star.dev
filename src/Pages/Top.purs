@@ -8,15 +8,16 @@ import Jelly (Component, text, (:=))
 import Jelly.Element as JE
 
 topPage :: forall context. Component context
-topPage = JE.div [ "class" := "h-full w-full" ] do
+topPage = do
+  M.h1 $ text "About Me"
   JE.div [ "class" := "flex items-center" ] do
     JE.img [ "src" := "./img/zer0-star.webp", "alt" := "zer0-star", "class" := "h-20 rounded-full" ]
     JE.div [ "class" := "ml-4" ] do
-      JE.h1 [ "class" := "text-3xl font-bold" ] do
+      JE.h2 [ "class" := "text-3xl font-bold" ] do
         text "zer0-star"
       JE.p [ "class" := "" ] do
         text "Software Engineer"
-  M.h1 $ text "whoami"
+  M.h2 $ text "whoami"
   JE.p' $ text "I am:"
   M.list
     [ text "a competitive programmer"
@@ -27,9 +28,9 @@ topPage = JE.div [ "class" := "h-full w-full" ] do
     , text "a student"
     , text "a programming language lover"
     ]
-  M.h2 $ text "Education"
+  M.h3 $ text "Education"
   JE.p' $ text "School of Computing, Tokyo Institute of Technology"
-  M.h2 $ text "Links"
+  M.h3 $ text "Links"
   M.list
     [ account "https://twitter.com/0x_zer0-star" "Twitter" "0x_zer0star"
     , account "https://keybase.io/zer0star" "Keybase" "zer0star"
@@ -46,7 +47,7 @@ topPage = JE.div [ "class" := "h-full w-full" ] do
     , account "https://atcoder.jp/users/zer0star" "AtCoder" "zer0star"
     , link "https://zer0-star.github.io/blog" $ text "Blog"
     ]
-  M.h1 $ text "Skills"
+  M.h2 $ text "Skills"
   M.list
     [ do
         text "Competitive Programming"
@@ -56,13 +57,13 @@ topPage = JE.div [ "class" := "h-full w-full" ] do
               text "AtCoder: 2049, yellow (at 2022/11/22)"
           ]
     ]
-  M.h1 $ text "Favorites"
-  M.h2 $ text "Programming Languages"
+  M.h2 $ text "Favorites"
+  M.h3 $ text "Programming Languages"
   M.list
     [ text "Nim"
     , text "Haskell"
     ]
-  M.h2 $ text "Games"
+  M.h3 $ text "Games"
   M.list
     [ do
         text "Puzzle games"
@@ -73,7 +74,7 @@ topPage = JE.div [ "class" := "h-full w-full" ] do
     , text "Super Smash Bros."
     , text "Splatoon 3"
     ]
-  M.h2 $ text "Characters"
+  M.h3 $ text "Characters"
   M.list
     [ link "https://puyonexus.com/wiki/Feli" $ text "Feli"
     , link "https://madeinabyss.fandom.com/wiki/Nanachi" $ text "Nanachi"
