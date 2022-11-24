@@ -2,39 +2,84 @@ module Pages.Top where
 
 import Prelude
 
+import Component.Link (link)
+import Component.Markup as M
 import Jelly (Component, text, (:=))
 import Jelly.Element as JE
 
-import Component.Markup as M
-
 topPage :: forall context. Component context
 topPage = JE.div [ "class" := "h-full w-full" ] do
-  JE.div' do
-    JE.img [ "src" := "./img/zer0-star.webp", "alt" := "zer0-star", "class" := "h-64 rounded-full animate-pop-out" ]
+  JE.div [ "class" := "flex items-center" ] do
+    JE.img [ "src" := "./img/zer0-star.webp", "alt" := "zer0-star", "class" := "h-20 rounded-full" ]
+    JE.div [ "class" := "ml-4" ] do
+      JE.h1 [ "class" := "text-3xl font-bold" ] do
+        text "zer0-star"
+      JE.p [ "class" := "" ] do
+        text "Software Engineer"
   M.h1 $ text "whoami"
+  JE.p' $ text "I am:"
+  M.list
+    [ text "a competitive programmer"
+    , do
+        text "a member of "
+        link "https://trap.jp/" $ text "traP"
+    --     text " (short for Digital Creators Club traP)"
+    , text "a student"
+    , text "a programming language lover"
+    ]
   M.h2 $ text "Education"
   JE.p' $ text "School of Computing, Tokyo Institute of Technology"
   M.h2 $ text "Links"
   M.list
-    [ account "Twitter" "0x_zer0star" "https://twitter.com/0x_zer0-star"
+    [ account "https://twitter.com/0x_zer0-star" "Twitter" "0x_zer0star"
+    , account "https://keybase.io/zer0star" "Keybase" "zer0star"
     , do
-        account "Github" "zer0-star" "https://github.com/zer0-star"
+        account "https://github.com/zer0-star" "Github" "zer0-star"
         M.list
           [ do
-              link "zer0-star/zer0-star.dev" "https://github.com/zer0-star/zer0-star.dev"
+              link "https://github.com/zer0-star/zer0-star.dev" $ text "zer0-star/zer0-star.dev"
               JE.div' $ text "this website"
           , do
-              link "zer0-star/nix-home" "https://github.com/zer0-star/nix-home"
+              link "https://github.com/zer0-star/nix-home" $ text "zer0-star/nix-home"
               JE.div' $ text "my home-manager setup"
           ]
-    , account "AtCoder" "zer0star" "https://atcoder.jp/users/zer0star"
-    , link "Blog" "https://zer0-star.github.io/blog"
+    , account "https://atcoder.jp/users/zer0star" "AtCoder" "zer0star"
+    , link "https://zer0-star.github.io/blog" $ text "Blog"
+    ]
+  M.h1 $ text "Skills"
+  M.list
+    [ do
+        text "Competitive Programming"
+        JE.div' $ text "Ratings:"
+        M.list
+          [ do
+              text "AtCoder: 2049, yellow (at 2022/11/22)"
+          ]
+    ]
+  M.h1 $ text "Favorites"
+  M.h2 $ text "Programming Languages"
+  M.list
+    [ text "Nim"
+    , text "Haskell"
+    ]
+  M.h2 $ text "Games"
+  M.list
+    [ do
+        text "Puzzle games"
+        M.list
+          [ text "Puyo Puyo"
+          , text "Tetris"
+          ]
+    , text "Super Smash Bros."
+    , text "Splatoon 3"
+    ]
+  M.h2 $ text "Characters"
+  M.list
+    [ link "https://puyonexus.com/wiki/Feli" $ text "Feli"
+    , link "https://madeinabyss.fandom.com/wiki/Nanachi" $ text "Nanachi"
     ]
 
 account :: forall context. String -> String -> String -> Component context
-account name id url = do
+account url name id = do
   text (name <> ": ")
-  JE.a [ "href" := url, "class" := "underline decoration-emerald-500 font-bold", "target" := "_blank", "rel" := "noreferrer noopener" ] $ text ("@" <> id)
-
-link :: forall context. String -> String -> Component context
-link name url = JE.a [ "href" := url, "class" := "underline decoration-emerald-500 font-bold", "target" := "_blank", "rel" := "noreferrer noopener" ] $ text name
+  link url (text $ "@" <> id)

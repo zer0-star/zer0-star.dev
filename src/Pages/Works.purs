@@ -5,4 +5,4 @@ import Prelude
 import Jelly (Component, text)
 
 worksPage :: forall context. Component context
-worksPage = text "Work in Progress"
+worksPage = text "WIP; check back later!"
