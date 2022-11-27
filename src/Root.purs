@@ -41,6 +41,8 @@ headComponent = JE.head' do
   JE.meta [ "property" := "og:description", "content" := "zer0-star's website" ]
   JE.meta [ "property" := "og:image", "content" := "https://zer0-star.dev/img/ogp_image.png" ]
 
+  JE.link [ "rel" := "icon", "href" := "/favicon.svg", "type" := "image/svg+xml" ]
+
 bodyComponent :: Component Context
 bodyComponent = hooks do
   { textColor, bgColor } <- useColor

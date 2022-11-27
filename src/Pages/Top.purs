@@ -11,7 +11,7 @@ topPage :: forall context. Component context
 topPage = do
   M.h1 $ text "About Me"
   JE.div [ "class" := "flex items-center" ] do
-    JE.img [ "src" := "./img/zer0-star.webp", "alt" := "zer0-star", "class" := "h-20 rounded-full" ]
+    JE.img [ "src" := "./img/zer0-star.svg", "alt" := "zer0-star", "class" := "h-20 rounded-full" ]
     JE.div [ "class" := "ml-4" ] do
       JE.h2 [ "class" := "text-3xl font-bold" ] do
         text "zer0-star"
