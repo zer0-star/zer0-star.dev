@@ -54,7 +54,7 @@ topPage = do
         JE.div' $ text "Ratings:"
         M.list
           [ do
-              text "AtCoder: 2049, yellow (at 2022/11/22)"
+              text "AtCoder: 2110, yellow (at 2023/02/09)"
           ]
     ]
   M.h2 $ text "Favorites"
