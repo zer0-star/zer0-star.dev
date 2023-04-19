@@ -45,7 +45,7 @@ topPage = do
               JE.div' $ text "my home-manager setup"
           ]
     , account "https://atcoder.jp/users/zer0star" "AtCoder" "zer0star"
-    , link "https://zer0-star.github.io/blog" $ text "Blog"
+    , link "https://blog.zer0-star.dev/" $ text "Blog"
     ]
   M.h2 $ text "Skills"
   M.list
