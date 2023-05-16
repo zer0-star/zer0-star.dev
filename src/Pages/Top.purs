@@ -11,7 +11,7 @@ topPage :: forall context. Component context
 topPage = do
   M.h1 $ text "About Me"
   JE.div [ "class" := "flex items-center" ] do
-    JE.img [ "src" := "./img/zer0-star.svg", "alt" := "zer0-star", "class" := "h-20 rounded-full" ]
+    JE.img [ "src" := "./img/zer0-star.svg", "height" := "80", "alt" := "zer0-star", "class" := "h-20 rounded-full" ]
     JE.div [ "class" := "ml-4" ] do
       JE.h2 [ "class" := "text-3xl font-bold" ] do
         text "zer0-star"
@@ -34,16 +34,7 @@ topPage = do
   M.list
     [ account "https://twitter.com/0x_zer0-star" "Twitter" "0x_zer0star"
     , account "https://keybase.io/zer0star" "Keybase" "zer0star"
-    , do
-        account "https://github.com/zer0-star" "Github" "zer0-star"
-        M.list
-          [ do
-              link "https://github.com/zer0-star/zer0-star.dev" $ text "zer0-star/zer0-star.dev"
-              JE.div' $ text "this website"
-          , do
-              link "https://github.com/zer0-star/nix-home" $ text "zer0-star/nix-home"
-              JE.div' $ text "my home-manager setup"
-          ]
+    , account "https://github.com/zer0-star" "Github" "zer0-star"
     , account "https://atcoder.jp/users/zer0star" "AtCoder" "zer0star"
     , link "https://blog.zer0-star.dev/" $ text "Blog"
     ]
