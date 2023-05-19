@@ -13,6 +13,7 @@ import Jelly.Router (routerLink')
 import Jelly.Router.Data.Router (useRouter)
 import Pages.NotFound (notFoundPage)
 import Pages.Top (topPage)
+import Pages.About (aboutPage)
 import Pages.Works (worksPage)
 
 rootComponent :: Component Context
@@ -49,8 +50,7 @@ bodyComponent = hooks do
   pure do
     JE.body [ "class" := [ "min-h-screen flex flex-col", bgColor, textColor ] ] do
       headerComponent
-      JE.div [ "class" := "p-2 h-full w-full flex-auto" ] do
-        mainContent
+      mainContent
       footerComponent
 
 headerComponent :: Component Context
@@ -65,7 +65,7 @@ headerComponent = hooks do
             JE.span [ "class" := "ml-1 mr-0.5" ] $ text "."
             text "dev"
         JE.div [ "class" := "flex gap-4 text-xl ml-1" ] do
-          linkPage PageTop (text "About Me")
+          linkPage PageAbout (text "About Me")
           linkPage PageWorks (text "Works")
       JE.div [ "class" := "h-[1px] w-full bg-pale-blue" ] $ pure unit
 
@@ -78,15 +78,16 @@ footerComponent = do
         text "powered by "
         link "https://github.com/yukikurage/purescript-jelly" $ text "Jelly"
       JE.div' do
-        text "&copy;2022 zer0-star"
+        text "&copy;2023 zer0-star"
 
 mainContent :: Component Context
 mainContent = hooks do
   { currentUrlSig } <- useRouter
-  pure $ JE.main [ "class" := "h-full w-full my-4 text-lg flex flex-col items-center" ] do
-    JE.div [ "class" := "w-full max-w-3xl" ] $ signalC do
+  pure $ JE.main [ "class" := "p-2 flex-auto self-center w-full my-4 text-lg flex flex-col max-w-3xl" ] do
+    signalC do
       currentUrl <- currentUrlSig
       pure case urlToPage currentUrl of
         PageTop -> topPage
+        PageAbout -> aboutPage
         PageWorks -> worksPage
         PageNotFound -> notFoundPage

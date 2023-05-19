@@ -29,4 +29,5 @@ main = launchAff_ do
 
   genHTML' PageTop "index.html"
   genHTML' PageWorks "index.html"
+  genHTML' PageAbout "index.html"
   genHTML PageNotFound [ "public" ] "404.html"
