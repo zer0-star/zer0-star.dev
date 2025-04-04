@@ -9,7 +9,7 @@ import Component.Markup as M
 
 worksPage :: forall context. Component context
 worksPage = do
-  M.h1 $ text "Works"
+  M.h1 $ JE.span [ "class" := "view-transition-works inline-block decoration-inherit" ] $ text "Works"
   M.h2 $ link "https://github.com/zer0-star/git-hs" $ normalText "git-hs"
   JE.p' $ text "A toy git implementetaion written in Haskell"
   JE.p' $ text "Not fully implemeted yet"

@@ -9,7 +9,7 @@ import Jelly.Element as JE
 
 aboutPage :: forall context. Component context
 aboutPage = do
-  M.h1 $ text "About Me"
+  M.h1 $ JE.span [ "class" := "view-transition-about-me inline-block decoration-inherit" ] $ text "About Me"
   JE.div [ "class" := "flex items-center" ] do
     JE.img [ "src" := "/img/zer0-star.svg", "height" := "80", "alt" := "zer0-star", "class" := "h-20 rounded-full" ]
     JE.div [ "class" := "ml-4" ] do

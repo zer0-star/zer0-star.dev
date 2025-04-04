@@ -5,3 +5,19 @@
 .contain-paint {
   contain: paint;
 }
+
+.view-transition-about-me {
+  view-transition-name: about-me;
+}
+
+.view-transition-works {
+  view-transition-name: works;
+}
+
+::view-transition-group(*) {
+  /* animation-duration: 2s; */
+}
+
+.decoration-inherit {
+  text-decoration: inherit;
+}
