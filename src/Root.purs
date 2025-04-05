@@ -57,7 +57,7 @@ headerComponent :: Component Context
 headerComponent = hooks do
   { bgColor } <- useColor
   pure do
-    JE.header [ "class" := [ "sticky top-0", bgColor ] ] do
+    JE.header [ "class" := [ "sticky top-0 z-50", bgColor ] ] do
       JE.div [ "class" := "px-4 py-1" ] do
         JE.div [ "class" := "font-Quicksand font-light text-6xl tracking-supertight" ] do
           routerLink' { path: [], query: mempty, hash: "" } do
