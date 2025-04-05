@@ -80,7 +80,7 @@ footerComponent = do
         text "powered by "
         link "https://github.com/yukikurage/purescript-jelly" $ text "Jelly"
       JE.div' do
-        text "&copy;2023 zer0-star"
+        text "&copy;2025 zer0-star"
 
 mainContent :: Component Context
 mainContent = hooks do

@@ -27,9 +27,11 @@ aboutPage = do
     --     text " (short for Digital Creators Club traP)"
     , text "a student"
     , text "a programming language lover"
+    , text "a type theory beginner"
     ]
   M.h3 $ text "Education"
-  JE.p' $ text "School of Computing, Tokyo Institute of Technology"
+  JE.p' $ text "Department of Mathematical and Computing Science, School of Computing, Institute of Science Tokyo"
+
   M.h3 $ text "Links"
   M.list
     [ account "https://twitter.com/0x_zer0-star" "Twitter" "0x_zer0star"
@@ -42,17 +44,42 @@ aboutPage = do
   M.list
     [ do
         text "Competitive Programming"
-        JE.div' $ text "Ratings:"
         M.list
-          [ do
-              text "AtCoder: 2110, yellow (at 2023/02/09)"
+          [ text "ICPC 2024, team zer0shiki, 19th in Asia Yokohama Regional"
+          , do
+              text "Ratings:"
+              M.list
+                [ do
+                    text "AtCoder: Algo 2068, yellow (at 2025/04/04)"
+                ]
           ]
+    , do
+        text "Web Development"
+        M.list
+          [ text "Typescript"
+          , text "React, Next.js"
+          , text "Vue.js"
+          ]
+    , text "Functional Programming"
+    , text "Type Theory, Logic"
+    , text "Proof Assistants"
     ]
+
+  M.h3 $ text "Work Experiences"
+
+  M.h4 $ text "Internship at pixiv Inc. 2023/08"
+  JE.p' $ text "Static analysis/type checking with PHPStan"
+  JE.p' do
+    text "Blog post (Japanese): "
+    link "https://inside.pixiv.blog/2023/12/26/113000"
+      $ text "夏インターンでPHPStanのバグを直してコントリビュートした話 - pixiv inside https://inside.pixiv.blog/2023/12/26/113000"
+
   M.h2 $ text "Favorites"
   M.h3 $ text "Programming Languages"
   M.list
     [ text "Nim"
     , text "Haskell"
+    , text "Lean"
     ]
   M.h3 $ text "Games"
   M.list
@@ -63,7 +90,7 @@ aboutPage = do
           , text "Tetris"
           ]
     , text "Super Smash Bros."
-    , text "Splatoon 3"
+    , text "Street Fighter 6"
     ]
   M.h3 $ text "Characters"
   M.list

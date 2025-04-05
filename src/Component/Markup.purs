@@ -15,6 +15,9 @@ h2 = JE.h2 [ "class" := "font-Quicksand font-light text-5xl tracking-tightest my
 h3 :: forall context. Component context -> Component context
 h3 = JE.h3 [ "class" := "font-Quicksand font-light text-4xl tracking-tightest my-4 before:content-['###'] before:mr-1 before:text-2xl before:tracking-tight" ]
 
+h4 :: forall context. Component context -> Component context
+h4 = JE.h4 [ "class" := "font-Quicksand font-light text-4xl tracking-tightest my-4 before:content-['####'] before:mr-1 before:text-2xl before:tracking-tight" ]
+
 list :: forall context. Array (Component context) -> Component context
 list items = JE.ul [ "class" := "pl-4" ] $ fold (map renderListItem items)
   where
