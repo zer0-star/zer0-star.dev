@@ -28,6 +28,8 @@ headComponent = JE.head' do
   JE.title' $ text "zer0-star.dev"
   JE.script [ "src" := "/index.js" ] mempty
   JE.link [ "rel" := "stylesheet", "href" := "/index.css" ]
+  JE.meta [ "charset" := "utf-8" ]
+  JE.meta [ "name" := "viewport", "content" := "width=device-width, initial-scale=1.0" ]
 
   JE.link [ "rel" := "preconnect", "href" := "https://fonts.googleapis.com" ]
   JE.link [ "rel" := "preconnect", "href" := "https://fonts.gstatic.com", "crossorigin" := true ]
@@ -83,7 +85,7 @@ footerComponent = do
 mainContent :: Component Context
 mainContent = hooks do
   { currentUrlSig } <- useRouter
-  pure $ JE.main [ "class" := "p-2 flex-auto self-center w-full my-4 text-lg flex flex-col max-w-3xl" ] do
+  pure $ JE.main [ "class" := "px-4 md:p-0 flex-auto self-center w-full my-4 text-lg flex flex-col max-w-3xl" ] do
     signalC do
       currentUrl <- currentUrlSig
       pure case urlToPage currentUrl of
