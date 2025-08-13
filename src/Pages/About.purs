@@ -67,6 +67,9 @@ aboutPage = do
 
   M.h3 $ text "Work Experiences"
 
+  M.h4 $ text "SWE Internship at Google Japan 2025/08 - 10"
+  JE.p' $ text "ChromeOS team"
+
   M.h4 $ text "Internship at pixiv Inc. 2023/08"
   JE.p' $ text "Static analysis/type checking with PHPStan"
   JE.p' do
